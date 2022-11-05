@@ -1,4 +1,4 @@
-from functions import spawn_circle
+from functions import spawn_circle, draw_snake
 import os
 import pygame
 import time
@@ -18,6 +18,8 @@ white = (255, 255, 255)
 speed = 10
 circle_x = 255
 circle_y = 255
+score_counter = 1
+snake_body = []
 while True: 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -52,11 +54,25 @@ while True:
 
 
     game_display.blit(background_image, (0, 0))
-    head_snake = pygame.draw.rect(game_display, white,(head_positionx, head_positiony, 30, 30))
+    # head_snake = pygame.draw.rect(game_display, white,(head_positionx, head_positiony, 30, 30))
     head_snake = []
-    circle = spawn_circle(circle_x, circle_y, game_display, display_width, display_height, head_positionx, head_positiony)
+    head_snake.append(head_positionx)
+    head_snake.append(head_positiony)
+    snake_body.append(head_snake)
+
+    if (len(snake_body) > score_counter):
+        del snake_body[0]
+    
+    for item in snake_body[:-1]:
+        if item == head_snake:
+            print("Perdeu")
+
+    draw_snake(snake_body, white, game_display)
+    
+    circle = spawn_circle(circle_x, circle_y, game_display, display_width, display_height, head_positionx, head_positiony, score_counter)
     circle_x = circle[0]
     circle_y = circle[1]
+    score_counter = circle[2]
 
 
 

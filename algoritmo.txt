@@ -1,0 +1,8 @@
+- criar um contador que ganha 1 toda vez que uma bolinha é comida. 
+E esse contador é utilizado para desenhar
+o número de quadrados do corpo
+- fazer o corpo seguir a cabeça
+- criar um sistema de pontuação onde a cobra ganha velocidade e mostra o score na tela
+- fazer o sistema de game over
+- criar um prompt que pede nome e email
+- dar uma ajeitada na estética do game

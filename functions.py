@@ -11,7 +11,6 @@ def spawn_circle(circle_x, circle_y,game_display, width, height, head_x, head_y,
         circle_x = random.randrange(70, width - 70)
         circle_y = random.randrange(70, height - 70)
         score_counter += 1
-        # score_sound.set_volume(1)
         pygame.mixer.Sound.play(score_sound)
     circle_color = (0, 200, 0)
     pygame.draw.circle(game_display, circle_color ,(circle_x, circle_y), circle_radius)
@@ -39,7 +38,12 @@ def show_score(game_display, green, score_counter):
 
 def save_match(name, email):
     os.system("cls")
-    file = open("historico.txt", "r")
+    try:
+        file = open("historico.txt", "r")
+    except:
+        file = open("historico.txt", "w")
+        file.close()
+        file = open("historico.txt", "r")
     last_match = file.readlines()
     file.close()
     file = open("historico.txt", "w")
